@@ -34,9 +34,9 @@ namespace SqlConn
 
 
 
-                //qq = "CREATE TABLE dump_malisheva.`11statistics` (`id` INT NOT NULL AUTO_INCREMENT, `table_name` VARCHAR(450) NULL, `percent_bytes` VARCHAR(450) NULL, `packets` VARCHAR(450) NULL, PRIMARY KEY(`id`));";
-                //command = new MySqlCommand(qq, conn);
-                //  command.ExecuteNonQuery();
+                string qq = "CREATE TABLE dump_malisheva.`statistic` (`id` INT NOT NULL AUTO_INCREMENT, `ip_source` VARCHAR(450) NULL, `ip_destination` VARCHAR(450) NULL, `port` VARCHAR(450) NULL, `duration` VARCHAR(450) NULL, `total_bytes` VARCHAR(450) NULL, `total_packets` VARCHAR(450) NULL, `table_name` VARCHAR(450) NULL, PRIMARY KEY(`id`));";
+                command = new MySqlCommand(qq, conn);
+                command.ExecuteNonQuery();
                 //qq = "CREATE TABLE ipstream as SELECT* FROM dump_all where isIp = \"YES\";";
                 //command = new MySqlCommand(qq, conn);
                 //command.ExecuteNonQuery();
@@ -370,7 +370,7 @@ namespace SqlConn
 
         private static MySqlCommand getStatisticsAndInsertToTable(Dictionary<string, List<string>> tableAndPackets, MySqlConnection conn, MySqlCommand command)
         {
-            string statisticTable = "11statistics";
+            string statisticTable = "statistic";
             foreach (KeyValuePair<string, List<string>> entry in tableAndPackets)
             {
                 string tableName = entry.Key;
